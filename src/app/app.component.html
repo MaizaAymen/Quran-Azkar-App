@@ -1,0 +1,21 @@
+<div class="p-3 mb-2 text-primary-emphasis" style="height: 100%;">
+  <h1 class="text-center fw-semibold" routerLink="/">Azkar & Quran</h1>
+
+  <div class="container d-flex justify-content-end">
+    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+      <button type="button" class="btn btn-outline text-bg-dark p-3" routerLink="/azkar">أذكار الصباح و المساء</button>
+      <button type="button" class="btn btn-outline text-bg-dark p-3" routerLink="/quran-suras">سور القرآن</button>
+    </div>
+  </div>
+
+<div class="container mt-4">
+  <div *ngIf="home">
+    <div class="quran-text">
+      &#xFD3F; {{ randomVerse.text }} &#xFD3E;
+    </div>    
+    <p><strong>Reference:</strong> {{ randomVerse.reference }}</p>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+</div>
+

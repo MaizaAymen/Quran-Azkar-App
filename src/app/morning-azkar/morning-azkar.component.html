@@ -1,0 +1,30 @@
+<h2 class="text-center fs-3 fw-semibold">أذكار الصباح و المساء</h2>
+
+<!-- Boutons pour afficher les adhkars matin et soir -->
+<div class="d-flex justify-content-center gap-3 my-3">
+  <button class="btn btn-dark" (click)="loadAzkarContent('morning')">أذكار الصباح</button>
+  <button class="btn btn-light" (click)="loadAzkarContent('evening')">أذكار المساء</button>
+</div>
+
+<!-- Liste des Azkars -->
+<div *ngIf="selectedAzkarContent.length > 0; else noAzkar">
+  <h3 class="text-center">{{ selectedAzkarTitle }}</h3>
+  <ul class="list-group">
+    <li *ngFor="let azkar of selectedAzkarContent" class="list-group-item">
+            <!-- Bouton de lecture audio -->
+            <div class="mt-3">
+              <button (click)="toggleAudio(azkar.content)" class="btn btn-link text-info">
+                <i [class.bi-play-circle]="!isPlaying || currentAzkarContent !== azkar.content"></i>
+                <i [class.bi-pause-circle]="isPlaying && currentAzkarContent === azkar.content"></i>
+                <span class="ms-2">{{ isPlaying && currentAzkarContent === azkar.content ? 'Pause' : 'Lire' }}</span>
+              </button>
+            </div>
+      <p class="text-center">{{ azkar.content }}</p>
+      <p *ngIf="azkar.description" class="text-muted text-end"><small>{{ azkar.description }}</small></p>      
+    </li>
+  </ul>  
+</div>
+
+<ng-template #noAzkar>
+  <p class="text-center">لا توجد أذكار للعرض حاليا.</p>
+</ng-template>
